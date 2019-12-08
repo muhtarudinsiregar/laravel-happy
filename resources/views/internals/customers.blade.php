@@ -2,7 +2,9 @@
 @section("content")
 <ul>
     @foreach ($customers as $customer)
-    {{ $customer }}
+    <li>
+        {{ $customer->name }}
+    </li>
     @endforeach
 </ul>
 @endsection
