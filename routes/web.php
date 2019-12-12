@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::view("about", "about");
 Route::get("customers", "CustomerController@index");
+Route::post("customers", "CustomerController@store");
