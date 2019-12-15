@@ -22,6 +22,15 @@
                 <div class="text-danger">{{ $errors->first('email') }}</div>
             </div>
             <div class="form-group">
+                <label for="company_id">Companies</label>
+                <div class="text-danger">{{ $errors->first('company_id') }}</div>
+                <select name="company_id" class="form-control" id="company_id">
+                    @foreach ($companies as $company)
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="">Status</label>
                 <div class="text-danger">{{ $errors->first('active') }}</div>
                 <select name="active" class="form-control" id="active">
@@ -42,7 +51,7 @@
         <ul>
             @foreach ($activeCustomers as $customer)
             <li>
-                {{ $customer->name }} <span class="text-muted">({{ $customer->email }})</span>
+                {{ $customer->name }} <span class="text-muted">({{ $customer->company->name }})</span>
             </li>
             @endforeach
         </ul>
@@ -53,10 +62,21 @@
         <ul>
             @foreach ($inactiveCustomers as $customer)
             <li>
-                {{ $customer->name }} <span class="text-muted">({{ $customer->email }})</span>
+                {{ $customer->name }} <span class="text-muted">({{ $customer->company->name }})</span>
             </li>
             @endforeach
         </ul>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12">
+        @foreach ($companies as $company)
+        <h3>{{ $company->name }}</h3>
+        @foreach ($company->customers as $customer)
+        <li>{{ $customer->name }}</li>
+        @endforeach
+        @endforeach
     </div>
 </div>
 @endsection
