@@ -37,4 +37,9 @@ class CustomerController extends Controller
 
         return redirect('customers');
     }
+
+    public function show(Customer $customer)
+    {
+        return view('customers.show', compact('customer'));
+    }
 }
