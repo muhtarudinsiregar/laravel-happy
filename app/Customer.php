@@ -11,13 +11,13 @@ class Customer extends Model
 
     // guarded example
     protected $guarded = [];
+    protected $attributes = [
+        'active' => 1
+    ];
 
     public function getActiveAttribute($attribute)
     {
-        return [
-            0 => 'Inactive',
-            1 => 'Active'
-        ][$attribute];
+        return $this->activeOption()[$attribute];
     }
     public function scopeActive($query)
     {
@@ -32,5 +32,13 @@ class Customer extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function activeOption()
+    {
+        return [
+            0 => 'Inactive',
+            1 => 'Active'
+        ];
     }
 }

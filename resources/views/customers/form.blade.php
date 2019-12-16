@@ -15,7 +15,8 @@
     <div class="text-danger">{{ $errors->first('company_id') }}</div>
     <select name="company_id" class="form-control" id="company_id">
         @foreach ($companies as $company)
-        <option value="{{$company->id}}">{{$company->name}}</option>
+        <option value="{{$company->id}}" {{ $company->id === $customer->company_id? 'selected': ''  }}>
+            {{$company->name}}</option>
         @endforeach
     </select>
 </div>
@@ -24,7 +25,10 @@
     <div class="text-danger">{{ $errors->first('active') }}</div>
     <select name="active" class="form-control" id="active">
         <option value="" disabled>Select Customer status</option>
-        <option value="1">Active</option>
-        <option value="0">Inactive</option>
+        @foreach ($customer->activeOption() as $activeOptionKey => $activeOptionValue)
+        <option value="1" {{ $customer->active == $activeOptionValue? "selected": "" }}>{{ $activeOptionValue }}
+        </option>
+
+        @endforeach
     </select>
 </div>
