@@ -27,3 +27,7 @@ Route::view("about", "about");
 Route::resource("customers", "CustomerController");
 Route::get("contact ", "ContactFormController@create");
 Route::post("contact ", "ContactFormController@store");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
