@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', "Contact Us")
 @section('content')
+@if (!session()->has('message'))
 <form action="/contact" method="post">
     @csrf
     <div class="form-group pb-2">
@@ -20,4 +21,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+@endif
 @endsection
