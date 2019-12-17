@@ -25,3 +25,5 @@ Route::view("about", "about");
 // Route::delete("customers/{customer}", "CustomerController@destroy");
 
 Route::resource("customers", "CustomerController");
+Route::get("contact ", "ContactFormController@create");
+Route::post("contact ", "ContactFormController@store");
