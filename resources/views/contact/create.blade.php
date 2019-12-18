@@ -2,7 +2,7 @@
 @section('title', "Contact Us")
 @section('content')
 @if (!session()->has('message'))
-<form action="/contact" method="post">
+<form action="{{ route('contact.create') }}" method="post">
     @csrf
     <div class="form-group pb-2">
         <label for="">Name</label>

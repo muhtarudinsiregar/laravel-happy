@@ -15,7 +15,7 @@ class TestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        dd(now()->format('s'));
+        // dd(now()->format('s'));
         return $next($request);
     }
 }
